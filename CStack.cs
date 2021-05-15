@@ -19,6 +19,7 @@ namespace Inlamning_3_ra_kod
      */
     public class CStack
     {
+        double[] lettersValuesArr = new double[8];
         public double X, Y, Z, T;
         public string entry;
         /* CONSTRUCTOR: CStack
@@ -37,7 +38,7 @@ namespace Inlamning_3_ra_kod
          */
         public void Exit()
         {
-
+            
         }
         /* METHOD: StackString
          * PURPOSE: construct a string to write out in a stack view
@@ -56,7 +57,9 @@ namespace Inlamning_3_ra_kod
          */
         public string VarString()
         {
-            return "insertme";
+            // return the value of all letters 
+            return $"{lettersValuesArr[0]}\n{lettersValuesArr[1]}\n{lettersValuesArr[2]}\n{lettersValuesArr[3]}\n{lettersValuesArr[4]}\n" +
+                   $"{lettersValuesArr[5]}\n{lettersValuesArr[6]}\n{lettersValuesArr[7]}\n";
         }
         /* METHOD: SetX
          * PURPOSE: set X with overwrite
@@ -231,7 +234,7 @@ namespace Inlamning_3_ra_kod
             double tmp = T;
             T = Z; Z = Y; Y = X; X = tmp;
         }
-        /* METHOD: Roll
+        /* METHOD: RollSetX
          * PURPOSE: rolls the stack up and puts a new value in X
          * PARAMETERS: double newX - the new value to put into X
          * RETURNS: --
@@ -247,9 +250,82 @@ namespace Inlamning_3_ra_kod
          * RETURNS: --
          * FEATURES: NOT YET IMPLEMENTED
          */
-        public void SetAddress(string name)
+        public int SetAddress(string name)
         {
+            #region old
+            //if (Enum.TryParse<Letters>(name, ignoreCase: true, out var whichLetter))
+            //{
+            //    switch (whichLetter)
+            //    {
+            //        case Letters.A:
+            //            {
+            //                letttersValues[0] = X;
+            //                break;
+            //            }
+            //        case Letters.B:
+            //            {
+            //                letttersValues[1] = X;
+            //                break;
+            //            }
+            //        case Letters.C:
+            //            {
+            //                letttersValues[2] = X;
+            //                break;
+            //            }
+            //        case Letters.D:
+            //            {
+            //                letttersValues[3] = X;
+            //                break;
+            //            }
+            //        case Letters.E:
+            //            {
+            //                letttersValues[4] = X;
+            //                break;
+            //            }
+            //        case Letters.F:
+            //            {
+            //                letttersValues[5] = X;
+            //                break;
+            //            }
+            //        case Letters.G:
+            //            {
+            //                letttersValues[6] = X;
+            //                break;
+            //            }
+            //        case Letters.H:
+            //            {
+            //                letttersValues[7] = X;
+            //                break;
+            //            }
+            //        default:
+            //            break;
+            //    }
 
+            //}
+            #endregion
+            switch (name.ToUpper())
+            {
+                case "A":
+                    return 0;
+                case "B":
+                    return 1;
+                case "C":
+                    return 2;
+                case "D":
+                    return 3;
+                case "E":
+                    return 4;
+                case "F":
+                    return 5;
+                case "G":
+                    return 6;
+                case "H":
+                    return 7;
+
+
+
+            }
+            return -1;
         }
         /* METHOD: SetVar
          * PURPOSE: 
@@ -257,9 +333,10 @@ namespace Inlamning_3_ra_kod
          * RETURNS: --
          * FEATURES: NOT YET IMPLEMENTED
          */
-        public void SetVar()
+        public void SetVar(double Xvalue, int lettersIndex)
         {
-
+            //sets the value of specified index to X value
+            lettersValuesArr[lettersIndex] = Xvalue;
         }
         /* METHOD: GetVar
          * PURPOSE: 
@@ -267,9 +344,11 @@ namespace Inlamning_3_ra_kod
          * RETURNS: --
          * FEATURES: NOT YET IMPLEMENTED
          */
-        public void GetVar()
+        public void  GetVar(int lettersIndex)
         {
-
+            //Returns the value att the specific index at lettersIndex
+            X = lettersValuesArr[lettersIndex];
+            //return  ;
         }
     }
 }

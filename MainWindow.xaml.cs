@@ -22,6 +22,7 @@ namespace Inlamning_3_ra_kod
     public partial class MainWindow : Window
     {
         CStack cs;
+        int letterIndex;
         public MainWindow()
         {
             // This line must be executed first:
@@ -123,18 +124,19 @@ namespace Inlamning_3_ra_kod
         private void Call_but(object sender, RoutedEventArgs e)
         {
             string op = (sender as Button).Content.ToString();
-            cs.SetAddress(op);
+            letterIndex = cs.SetAddress(op);
             UpdateNumberField();
         }
 
         private void OpBtn_sto(object sender, RoutedEventArgs e)
         {
-            cs.SetVar();
+            cs.SetVar(cs.X,letterIndex);
             UpdateNumberField();
         }
         private void OpBtn_rcl(object sender, RoutedEventArgs e)
         {
-            cs.GetVar();
+            //move Value from letterstore to X , remove  stored value ??????
+            cs.GetVar(letterIndex);
             UpdateNumberField();
         }
     }
