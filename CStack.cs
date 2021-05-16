@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inlamning_3_ra_kod
 {
@@ -38,7 +34,7 @@ namespace Inlamning_3_ra_kod
          */
         public void Exit()
         {
-            
+
         }
         /* METHOD: StackString
          * PURPOSE: construct a string to write out in a stack view
@@ -245,10 +241,10 @@ namespace Inlamning_3_ra_kod
             T = Z; Z = Y; Y = X; X = newX;
         }
         /* METHOD: SetAddress
-         * PURPOSE: 
+         * PURPOSE:Sets the index  of the user input to be saved
          * PARAMETERS: string name - variable name
-         * RETURNS: --
-         * FEATURES: NOT YET IMPLEMENTED
+         * RETURNS: An int value from 0 to 7 that represents 8 possible indexes
+         * FAILS: value not inside range, return -1.
          */
         public int SetAddress(string name)
         {
@@ -321,34 +317,40 @@ namespace Inlamning_3_ra_kod
                     return 6;
                 case "H":
                     return 7;
-
-
-
             }
             return -1;
         }
         /* METHOD: SetVar
-         * PURPOSE: 
-         * PARAMETERS: --
+         * PURPOSE: Sets the userinput value at the specified index
+         * PARAMETERS: double Xvalue - variable name, int lettersIndex - variable name
          * RETURNS: --
-         * FEATURES: NOT YET IMPLEMENTED
          */
         public void SetVar(double Xvalue, int lettersIndex)
         {
             //sets the value of specified index to X value
-            lettersValuesArr[lettersIndex] = Xvalue;
+            if (lettersIndex >= 0 && lettersIndex <= 7)
+            {
+                lettersValuesArr[lettersIndex] = Xvalue;
+
+            }
+
         }
         /* METHOD: GetVar
-         * PURPOSE: 
-         * PARAMETERS: --
+         * PURPOSE: Updates the current inputed value to the saved value at the specified index.
+         * PARAMETERS: int lettersindex - variable name
          * RETURNS: --
-         * FEATURES: NOT YET IMPLEMENTED
          */
-        public void  GetVar(int lettersIndex)
+        public void GetVar(int lettersIndex)
         {
+            //string strDigit;
             //Returns the value att the specific index at lettersIndex
-            X = lettersValuesArr[lettersIndex];
-            //return  ;
+            if (lettersIndex >= 0 && lettersIndex <= 7)
+            {
+                entry = ((decimal)lettersValuesArr[lettersIndex]).ToString();
+            }
+
+
+
         }
     }
 }

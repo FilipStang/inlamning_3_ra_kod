@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Inlamning_3_ra_kod
 {
@@ -22,7 +10,8 @@ namespace Inlamning_3_ra_kod
     public partial class MainWindow : Window
     {
         CStack cs;
-        int letterIndex;
+        int letterIndex = -1;
+        string userInputDigit;
         public MainWindow()
         {
             // This line must be executed first:
@@ -50,7 +39,8 @@ namespace Inlamning_3_ra_kod
         private void NumBtn(object sender, RoutedEventArgs e)
         {
             Button B = sender as Button;
-            cs.EntryAddNum(B.Content.ToString());
+            userInputDigit = B.Content.ToString();
+            cs.EntryAddNum(userInputDigit);
             UpdateNumberField();
         }
         private void NumComma(object sender, RoutedEventArgs e)
@@ -125,18 +115,21 @@ namespace Inlamning_3_ra_kod
         {
             string op = (sender as Button).Content.ToString();
             letterIndex = cs.SetAddress(op);
+
             UpdateNumberField();
         }
 
         private void OpBtn_sto(object sender, RoutedEventArgs e)
         {
-            cs.SetVar(cs.X,letterIndex);
+            cs.SetVar(cs.X, letterIndex);
+            letterIndex = -1;
             UpdateNumberField();
         }
         private void OpBtn_rcl(object sender, RoutedEventArgs e)
         {
-            //move Value from letterstore to X , remove  stored value ??????
+
             cs.GetVar(letterIndex);
+            letterIndex = -1;
             UpdateNumberField();
         }
     }
